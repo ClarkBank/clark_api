@@ -19,6 +19,17 @@ class AccountsController < ApplicationController
     head :unprocessable_entity
   end
 
+  def withdraw
+    account = Account.find(params[:id])
+    return head :not_found unless account
+
+    if Actors::Account::UseCases.withdraw_from_an_account(account, amount)
+      return render json: {withdrawn: true}
+    end
+
+    head :unprocessable_entity
+  end
+
   private
   def account_params
     params.require(:account).permit(:name, :user_id)
