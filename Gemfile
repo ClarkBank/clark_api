@@ -4,6 +4,7 @@ ruby '2.3.1'
 
 gem 'rails', '~> 5.0.0'
 gem 'puma', '~> 3.0'
+gem 'jwt'
 gem 'rack-cors'
 gem 'pg'
 gem 'sidekiq', '~> 4.1'
@@ -23,7 +24,6 @@ end
 group :test do
   gem 'rspec'
   gem 'shoulda-matchers', '~> 3.1'
-  gem 'codeclimate-test-reporter', require: nil
 end
 
 group :development do
