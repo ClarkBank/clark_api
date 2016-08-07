@@ -23,3 +23,4 @@ module ClarkApi
 end
 
 require_relative '../app/actors/customer/customer'
+require_relative '../app/actors/account/account'

@@ -24,8 +24,7 @@ describe Actors::Customer::UseCases do
       subject
     end
 
-    it 'triggers user_registered event' do
-      pending
+    it 'triggers user.registered event' do
     end
   end
 end

@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :accountt do
+  factory :account do
     name 'City Bank'
     balance 9.99
     user
