@@ -30,6 +30,21 @@ class AccountsController < ApplicationController
     head :unprocessable_entity
   end
 
+  def transfer
+    account = Account.find(params[:id])
+    return head :not_found unless account
+
+    recipient_param = params.permit(:recipient_id)
+    recipient = Account.find(recipient_param[:recipient_id])
+    return head :not_found unless recipient
+
+    if Actors::Account::UseCases.transfer_between_accounts(account, recipient, amount)
+      return render json: {transfered: true}
+    end
+
+    head :unprocessable_entity
+  end
+
   private
   def account_params
     params.require(:account).permit(:name, :user_id)

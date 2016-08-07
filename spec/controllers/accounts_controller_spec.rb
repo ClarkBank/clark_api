@@ -41,17 +41,17 @@ describe AccountsController do
     end
   end
 
-  # describe 'POST transfer' do
-  #   context 'with valid params' do
-  #     let!(:user_recipient) { create(:user) }
-  #     let!(:recipient) { create(:account, user_id:  user_recipient.id) }
-  #     let(:params) { { id: account.id, recipient_id: recipient.id, amount: 5.00 } }
-  #
-  #     it 'returns 200' do
-  #       request.headers['Authorization'] = "Bearer #{token}"
-  #       post :transfer, params: params, as: :json
-  #       expect(response).to have_http_status(:success)
-  #     end
-  #   end
-  # end
+  describe 'POST transfer' do
+    context 'with valid params' do
+      let!(:user_recipient) { create(:user) }
+      let!(:recipient) { create(:account, user_id:  user_recipient.id) }
+      let(:params) { { id: account.id, recipient_id: recipient.id, amount: 5.00 } }
+
+      it 'returns 200' do
+        request.headers['Authorization'] = "Bearer #{token}"
+        post :transfer, params: params, as: :json
+        expect(response).to have_http_status(:success)
+      end
+    end
+  end
 end
