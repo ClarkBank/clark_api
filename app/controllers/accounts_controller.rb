@@ -1,5 +1,10 @@
 class AccountsController < ApplicationController
   before_action :authenticate!
+  before_action :authorize_user
+
+  def index
+    # permit all
+  end
 
   def create
     if Actors::Account::UseCases.open_bank_account(account_params)
@@ -53,5 +58,9 @@ class AccountsController < ApplicationController
   def amount
     param = params.permit(:amount)
     param[:amount].to_f
+  end
+
+  def authorize_user
+    authorize(User)
   end
 end

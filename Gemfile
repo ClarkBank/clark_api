@@ -7,12 +7,7 @@ gem 'puma', '~> 3.0'
 gem 'jwt'
 gem 'rack-cors'
 gem 'pg'
-gem 'sidekiq', '~> 4.1'
-
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
-
-# Use ActiveModel has_secure_password
+gem "pundit"
 gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
@@ -24,6 +19,7 @@ end
 group :test do
   gem 'rspec'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'database_cleaner'
 end
 
 group :development do

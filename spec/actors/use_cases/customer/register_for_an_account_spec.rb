@@ -8,7 +8,7 @@ describe Actors::Customer::UseCases do
 
   before do
     allow(User).to receive(:new).and_return(user_instance)
-    allow(Role).to receive(:new).and_return(role_instance)
+    allow(Role).to receive(:find_by).and_return(role_instance)
   end
 
   describe 'register_for_an_account' do
@@ -20,7 +20,7 @@ describe Actors::Customer::UseCases do
     end
 
     it 'assigns default user role' do
-      expect(Role).to receive(:new).with(role_params)
+      expect(Role).to receive(:find_by).with(role_params)
       subject
     end
 

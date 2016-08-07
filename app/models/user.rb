@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :assignments
-  has_many :roles, through: :assignments
+  has_many :roles, through: :assignments, autosave: false
 
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, length: { in: 6..20 }

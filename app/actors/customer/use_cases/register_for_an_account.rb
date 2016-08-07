@@ -3,7 +3,7 @@ module Actors
     module UseCases
       def self.register_for_an_account(user_params)
         user = User.new(user_params)
-        user.roles << Role.new(name: 'user')
+        user.roles << Role.find_by(name: 'user')
         user.save!
         # emitter.trigger(user.registered, user.to_hash.to_json)
         user

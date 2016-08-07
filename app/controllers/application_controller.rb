@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::API
   include ActionController::MimeResponds
+  include Pundit
 
   attr_reader :current_user
+
+  rescue_from Pundit::NotAuthorizedError, with: :render_not_authenticated
 
   protected
   def authenticate!
