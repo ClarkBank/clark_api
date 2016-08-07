@@ -55,7 +55,7 @@ This repository has automated image builds on hub.docker.com after successfully 
 
 ## Badges
 
-[![CircleCI](https://circleci.com/gh/rafaeljesus/bank_ror.svg?style=svg)](https://circleci.com/gh/rafaeljesus/bank_ror)
+[![CircleCI](https://circleci.com/gh/ClarkBank/clark_api.svg?style=svg)](https://circleci.com/gh/ClarkBank/clark_api)
 [![Code Climate](https://codeclimate.com/github/rafaeljesus/bank_ror/badges/gpa.svg)](https://codeclimate.com/github/rafaeljesus/bank_ror)
 [![Test Coverage](https://codeclimate.com/github/rafaeljesus/bank_ror/badges/coverage.svg)](https://codeclimate.com/github/rafaeljesus/bank_ror/coverage)
 [![Issue Count](https://codeclimate.com/github/rafaeljesus/bank_ror/badges/issue_count.svg)](https://codeclimate.com/github/rafaeljesus/bank_ror)
