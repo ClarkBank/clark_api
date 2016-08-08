@@ -7,9 +7,16 @@ describe Actors::Account::UseCases do
   let(:recipient_params) { attributes_for(:account, user_id: user_recipient.id) }
   let(:account_instance) { Account.new(account_params) }
   let(:recipient_instance) { Account.new(recipient_params) }
+  let(:emitter) { instance_double(Clark::EventBus::Emitter) }
 
   before do
     allow(account_instance).to receive(:amount_valid?).and_return(true)
+    allow(Clark::EventBus::Emitter).to receive(:new).and_return(emitter)
+    allow(emitter).to receive(:trigger)
+  end
+
+  after do
+    Clark::Support::Emitter.instance_variable_set('@emitter', nil)
   end
 
   describe 'transfer_between_accounts' do

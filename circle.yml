@@ -1,0 +1,13 @@
+machine:
+  ruby:
+    version: 2.3.1
+  services:
+    - docker
+deployment:
+  master:
+    branch: master
+    commands:
+      - docker build -t clark_bank/clark_api .
+      - docker login -e $DOCKERHUB_EMAIL -u $DOCKERHUB_USER -p $DOCKERHUB_PASS
+      - docker tag clark_bank/clark_api clark_bank/clark_api:master
+      - docker push clark_bank/clark_api:master

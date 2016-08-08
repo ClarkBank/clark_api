@@ -5,9 +5,16 @@ describe RegistrationsController do
     let(:role_params) { { name: 'user' } }
     let(:role_instance) { Role.new(role_params) }
     let(:params) { { user: attributes_for(:user) } }
+    let(:emitter) { instance_double(Clark::EventBus::Emitter) }
 
     before do
       allow(Role).to receive(:find_by).and_return(role_instance)
+      allow(Clark::EventBus::Emitter).to receive(:new).and_return(emitter)
+      allow(emitter).to receive(:trigger)
+    end
+
+    after do
+      Clark::Support::Emitter.instance_variable_set('@emitter', nil)
     end
 
     it 'registers user and generate token' do

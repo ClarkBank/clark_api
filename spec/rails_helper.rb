@@ -1,4 +1,7 @@
 ENV['RAILS_ENV'] ||= 'test'
+ENV['RABBIT_TOPIC'] = 'events'
+ENV['RABBIT_VHOST'] = 'events'
+ENV['RABBIT_HOST'] = 'localhost'
 
 require File.expand_path('../../config/environment', __FILE__)
 
@@ -7,6 +10,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'support/request_helper'
+require 'clark/event_bus'
 
 ActiveRecord::Migration.maintain_test_schema!
 

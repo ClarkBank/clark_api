@@ -9,6 +9,7 @@ gem 'rack-cors'
 gem 'pg'
 gem "pundit"
 gem 'bcrypt', '~> 3.1.7'
+gem 'clark_event_bus', git: 'https://github.com/ClarkBank/clark_event_bus.git', branch: 'master'
 
 group :development, :test do
   gem 'byebug', platform: :mri

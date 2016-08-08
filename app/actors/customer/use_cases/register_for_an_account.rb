@@ -5,13 +5,13 @@ module Actors
         user = User.new(user_params)
         user.roles << Role.find_by(name: 'user')
         user.save!
-        # emitter.trigger(user.registered, user.to_hash.to_json)
+        emitter.trigger('user.registered', user.to_json)
         user
       end
 
       private
-      def emitter
-        @emitter ||= Clark::EventBus::Emitter
+      def self.emitter
+        Clark::Support::Emitter.adapter
       end
     end
   end

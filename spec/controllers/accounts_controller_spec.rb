@@ -1,6 +1,17 @@
 require 'rails_helper'
 
 describe AccountsController do
+  let(:emitter) { instance_double(Clark::EventBus::Emitter) }
+
+  before do
+    allow(Clark::EventBus::Emitter).to receive(:new).and_return(emitter)
+    allow(emitter).to receive(:trigger)
+  end
+
+  after(:each) do
+    Clark::Support::Emitter.instance_variable_set('@emitter', nil)
+  end
+
   context 'when has role "admin"' do
     let!(:user) { create(:user_with_admin_role) }
     let!(:account) { create(:account, user_id: user.id) }
