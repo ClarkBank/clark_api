@@ -5,7 +5,7 @@ module Actors
         puts "Creating a bank account with #{account_params.to_h}"
         account = ::Account.new(account_params)
         opened = account.save!
-        emitter.trigger('bank.account.opened', account.to_json)
+        emitter.trigger(account.to_json, 'bank.account.opened')
         opened
       end
 

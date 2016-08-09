@@ -7,7 +7,7 @@ module Actors
         ActiveRecord::Base.transaction do
           withdrawn = withdraw_from_an_account(account, amount)
           deposited = deposit_for_an_account(recipient, amount)
-          emitter.trigger('bank.account.transfered', payload(account, recipient, amount))
+          emitter.trigger(payload(account, recipient, amount), 'bank.account.transfered')
           withdrawn and deposited
         end
       end

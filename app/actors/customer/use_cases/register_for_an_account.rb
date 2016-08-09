@@ -5,7 +5,7 @@ module Actors
         user = User.new(user_params)
         user.roles << Role.find_by(name: 'user')
         user.save!
-        emitter.trigger('user.registered', user.to_json)
+        emitter.trigger(user.to_json, 'user.registered')
         user
       end
 

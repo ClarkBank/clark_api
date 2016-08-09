@@ -1,7 +1,11 @@
 GIT
   remote: https://github.com/ClarkBank/clark_event_bus.git
-  revision: 89e26f11e05077b000293da13ed67c6abd4dcd37
+  revision: c5c29cd5a97b38d3aa629080111404aab9d43af2
   branch: master
+  specs:
+
+PATH
+  remote: ../clark_event_bus
   specs:
     clark_event_bus (0.1.0)
       bunny

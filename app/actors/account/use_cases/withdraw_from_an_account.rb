@@ -6,7 +6,7 @@ module Actors
         return false unless account.amount_valid?(amount)
         account.balance = (account.balance -= amount).round(2)
         withdrawn = account.save!
-        emitter.trigger('bank.account.withdrawn', account.to_json)
+        emitter.trigger(account.to_json, 'bank.account.withdrawn')
         withdrawn
       end
 
