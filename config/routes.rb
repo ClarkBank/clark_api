@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :health_check, only: [:index]
   resources :registrations, only: [:create]
 
-  resources :accounts, only: [:create] do
+  resources :accounts, only: [:create, :index] do
     member do
       post :deposit
       post :withdraw

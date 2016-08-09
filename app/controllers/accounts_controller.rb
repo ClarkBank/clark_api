@@ -3,7 +3,7 @@ class AccountsController < ApplicationController
   before_action :authorize_user
 
   def index
-    # permit all
+    render json: Account.all
   end
 
   def create

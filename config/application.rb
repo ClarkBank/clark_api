@@ -1,9 +1,13 @@
 require_relative 'boot'
 
-require "rails"
-require "active_model/railtie"
-require "active_record/railtie"
-require "action_controller/railtie"
+require 'rails'
+require 'active_model/railtie'
+require 'active_record/railtie'
+require 'action_controller/railtie'
+
+ENV['RABBIT_TOPIC'] ||= 'events'
+ENV['RABBIT_VHOST'] ||= 'events'
+ENV['RABBIT_HOST'] ||= 'localhost'
 
 Bundler.require(*Rails.groups)
 

@@ -17,6 +17,14 @@ describe AccountsController do
     let!(:account) { create(:account, user_id: user.id) }
     let(:token) { Clark::Support::JwtToken.encode({user_id: user.id}) }
 
+    describe 'GET index' do
+      it 'returns an accounts list' do
+        request.headers['Authorization'] = "Bearer #{token}"
+        get :index
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
     describe 'POST create' do
       context 'with valid params' do
         let(:params) { { account: attributes_for(:account, user_id: user.id) } }
@@ -35,7 +43,7 @@ describe AccountsController do
 
         it 'returns 200' do
           request.headers['Authorization'] = "Bearer #{token}"
-          put :deposit, params: params, as: :json
+          post :deposit, params: params, as: :json
           expect(response).to have_http_status(:success)
         end
       end
@@ -72,6 +80,14 @@ describe AccountsController do
     let!(:user) { create(:user_with_user_role) }
     let!(:account) { create(:account, user_id: user.id) }
     let(:token) { Clark::Support::JwtToken.encode({user_id: user.id}) }
+
+    describe 'GET index' do
+      it 'returns an accounts list' do
+        request.headers['Authorization'] = "Bearer #{token}"
+        get :index
+        expect(response).to have_http_status(:ok)
+      end
+    end
 
     describe 'POST create' do
       context 'with valid params' do
@@ -122,6 +138,14 @@ describe AccountsController do
     let!(:user) { create(:user_with_guest_role) }
     let!(:account) { create(:account, user_id: user.id) }
     let(:token) { Clark::Support::JwtToken.encode({user_id: user.id}) }
+
+    describe 'GET index' do
+      it 'returns an accounts list' do
+        request.headers['Authorization'] = "Bearer #{token}"
+        get :index
+        expect(response).to have_http_status(:ok)
+      end
+    end
 
     describe 'POST create' do
       let(:params) { { account: attributes_for(:account, user_id: user.id) } }
