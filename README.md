@@ -13,10 +13,13 @@ bundle
 rails s
 ```
 
+## Triggering Events
+In order to trigger events you must to create a vhost on rabbitmq admin, login as `user:guest` `pass:guest`, create the vhost `events` and set guest permission for it.
+
 ## API
 ### Create User
 ```bash
-curl -H 'Content-Type: application/json' -d '{"email": "test@mail.com", "password": "12345678"}' -X POST 'http://localhost:9292/users'
+curl -H 'Content-Type: application/json' -d '{"email": "test@mail.com", "password": "12345678"}' -X POST 'http://localhost:9292/registrations'
 ```
 
 ### Open a new Bank Account
